@@ -1,0 +1,28 @@
+{{!< default}}
+
+{{#contentFor 'title'}}{{ meta_title }}{{/contentFor}}
+
+<div class="c-page__wrap">
+  {{#tag}}
+  <div class='o-grid'>
+    <div class="o-grid__col--full">
+      <div class='c-archive'>
+        <h1 class='c-archive__title'>{{ name }}</h1>
+        {{#if description}}
+          <p class='c-archive__description'>{{ description }}</p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{/tag}}
+
+  <div class="c-page__section">
+    <div class="o-grid">
+      {{> loop }}
+    </div>
+  </div>
+
+  <div class="o-grid">
+    {{ pagination }}
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.c-page {
+  &__wrap {
+    padding: 20px 0 60px 0;
+
+    @include mq($from: tablet) {
+      padding: 60px 0;
+    }
+  }
+
+  &__section {
+    padding-bottom: 60px;
+  }
+}
+
+.post-template main {
+  padding: 40px 0;
+}
+
+.page-template main {
+  padding: 40px 0;
+}

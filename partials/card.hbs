@@ -1,0 +1,68 @@
+<div class="c-card c-card--{{#if format}}{{format}}{{else}}general{{/if}} js-post-card__wrap">
+  <div class="c-card__media u-link__wrap">
+    <a href="{{url}}" class="u-link"></a>
+    {{#if feature_image}}
+    <img class="c-card__image"
+      src="{{img_url feature_image}}"
+      alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}">
+    {{/if}}
+  </div>
+  <div class="c-card__main">
+    <div class="c-card__main--header">
+      {{#if (eq format "post")}}
+      <div class="c-card__membership--label c-card__membership--{{visibility}} c-card__chips">
+        {{#match visibility "paid"}}Premium{{else match visibility "members"}}Members{{else}}Free{{/match}}
+      </div>
+      {{else}}
+      {{#primary_tag}}
+      <div class="c-card__tags">
+        {{!-- <a class="c-card__tag--link c-card__chips--link" href="/product/tag/{{slug}}">{{name}}</a> --}}
+        <div class="c-card__tag c-card__chips">{{name}}</div>
+      </div>
+      {{/primary_tag}}
+      {{/if}}
+    </div>
+
+    <div class="c-card__subject">
+      <h2 class="c-card__title"><a href="{{url}}">{{title}}</a></h2>
+      <p class="c-card__excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}{{/if}}</p>
+    </div>
+
+    {{#if (eq format "post")}}
+    <div class="c-card__footer">
+      {{#primary_author}}
+      <div class="c-card__author">
+
+        <div class="c-card__author--profile t-v__only--desktop">
+        {{#if profile_image}}
+          <div class="c-card__author--profile-image">
+            <img src="{{img_url profile_image}}" alt="{{name}}의 프로필 사진">
+          </div>
+        {{/if}}
+        </div>
+        <div class="c-card__author--name">
+          <a class="c-card__author--link" href="{{url}}">{{name}}</a>
+        </div>
+      </div>
+      {{/primary_author}}
+
+      <div class="c-card__meta">
+
+        <div class="c-card__tag t-v__only--desktop">
+          {{#primary_tag}}
+          <div class="c-card__tag--name">
+            <a class="c-card__tag--link" href="{{url}}">{{name}}</a>
+          </div>
+          {{/primary_tag}}
+        </div>
+
+        <div class="c-card__date">
+          <time class="c-card__datetime t-v__only--desktop" datetime="{{ date format="YYYY-MM-DD" }}" title="{{ date format="YYYY년 M월 D일" }}">{{ date format="YYYY년 M월 D일" }}</time>
+          <time class="c-card__datetime t-v__only--mobile" datetime="{{ date format="YYYY-MM-DD" }}" title="{{ date format="YYYY.MM.DD" }}">{{ date format="YYYY.MM.DD" }}</time>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+
+  </div>
+</div>

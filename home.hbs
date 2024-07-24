@@ -1,0 +1,205 @@
+{{!< default}}
+
+{{#contentFor 'title'}}{{ meta_title }}{{/contentFor}}
+
+{{!-- Show the custom homepage content --}}
+
+{{!-- Home Hero --}}
+{{#get "products" filter="tag:hash-home-hero" include="tags" order="published_at desc"}}
+{{#if products}}
+<div class="c-home-hero__outer">
+  <div class="c-home-hero__wrap">
+    <div class="c-home-hero">
+
+      <div class="c-home-hero__inner">
+        <div class="c-home-hero__swiper">
+          <div class="swiper-wrapper">
+
+            {{#foreach products}}
+            <div class="swiper-slide">
+
+              <div class="c-slide-card">
+                <div class="c-slide-card__media u-link__wrap">
+                  <a href="{{url}}" class="u-link"></a>
+                  {{#if feature_image}}
+                  <img class="c-slide-card__image"
+                    src="{{img_url feature_image}}"
+                    alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}">
+                  {{/if}}
+                </div>
+                <div class="c-slide-card__content">
+                  {{#primary_tag}}
+                  <div class="c-slide-card__subtitle">{{name}}</div>
+                  {{/primary_tag}}
+                  {{!-- <div class="c-slide-card__subtitle">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}{{/if}}</div> --}}
+                  <h2 class="c-slide-card__title">
+                    <a class="c-slide-card__link" href="{{url}}">{{title}}</a>
+                  </h2>
+                </div>
+              </div>
+
+            </div>
+            {{/foreach}}
+
+          </div>
+        </div>
+
+        <div class="c-home-hero__swiper-navigation--outer">
+          <div class="c-home-hero__swiper-navigation">
+            <div class="swiper-button-prev">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/get}}
+
+
+{{!-- Feature Section --}}
+<div class="c-home-top__outer">
+  <div class="o-grid">
+
+    <div class="c-home-top">
+
+      <div class="c-home-top__col c-home-featured__col">
+        <div class="c-home-top__header">
+          <div class="c-home-top__title">{{#if @custom.home_top_section_1}}{{ @custom.home_top_section_1 }}{{else}}추천 강좌{{/if}}</div>
+        </div>
+        <div class="c-home-top__main">
+          {{> home-top-featured }}
+        </div>
+      </div>
+
+      <div class="c-home-top__col c-home-popular__col">
+        <div class="c-home-top__header">
+          <div class="c-home-top__title">
+            <a href="{{@site.url}}/shop/" class="c-home-top__title--link">
+              {{#if @custom.home_top_section_2}}{{ @custom.home_top_section_2 }}{{else}}인기 강좌{{/if}}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="c-home-top__main">
+          {{> home-top-popular }}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+{{!-- Home Post Section --}}
+{{#if @custom.tag_slugs_for_home_sections}}
+{{#get "tags" filter="slug:[{{@custom.tag_slugs_for_home_sections}}]"}}
+{{#if tags}}
+<div class="c-home-sections c-home-sections--post">
+{{#foreach tags}}
+  <section class="o-grid c-home-section__wrap">
+    <div class="c-home-section">
+      <div class="c-home-section__header">
+        <div class="c-home-section__title">
+          <a href="{{url}}" class="c-home-section__title--link">
+            {{name}}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    {{#get "posts" filter="tags:{{slug}}" include="tags,authors" limit="4" order="published_at desc" as |posts|}}
+    {{#if posts}}
+      <div class="c-archive-grid__post">
+      {{#foreach posts}}
+        {{> card format="post"}}
+      {{/foreach}}
+      </div>
+    {{/if}}
+    {{/get}}
+    </div>
+  </section>
+{{/foreach}}
+</div>
+{{/if}}
+{{/get}}
+{{/if}}
+
+
+{{!-- Section --}}
+<div class="c-home-sections">
+  <div style="display:none;">{{product_categories}}</div>
+{{#if product_categories}}
+  {{!-- {{#foreach product_categories as |items|}}{{#if tags}}{{#get "products" filter=(concat "tags:[" tags.[0].slug "]")  include="tags" limit="4" order="published_at desc"}}{{#if products}} --}}
+  {{#foreach product_categories as |items|}}{{#if tags}}{{#get "products" filter=(concat "tags:[" (tags autolink="false" slug="true") "]") include="tags" limit="4" order="published_at desc"}}{{#if products}}
+
+
+  {{!-- 2개 이상일 때 마지막 섹션 앞에 위치 --}}
+  {{#unless @first}}{{#if @last}}{{> home-promotion}}{{/if}}{{/unless}}
+
+  <section class="o-grid c-home-section__wrap">
+    <div class="c-home-section">
+      <div class="c-home-section__header">
+        <div class="c-home-section__title">
+          <a href="{{@items.url}}" class="c-home-section__title--link">
+            {{@items.label}}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="c-archive-grid">
+      {{#foreach products}}
+        {{> card}}
+      {{/foreach}}
+      </div>
+    </div>
+  </section>
+
+  {{!-- 1개일 때 마지막에 위치 --}}
+  {{#if @first}}{{#if @last}}{{> home-promotion}}{{/if}}{{/if}}
+
+  {{/if}}{{/get}}{{/if}}{{/foreach}}
+{{else}}
+  {{> home-promotion}}
+{{/if}}
+</div>
+
+{{#contentFor 'scripts'}}
+<script>
+const heroSwiper = new Swiper(".c-home-hero .c-home-hero__swiper", {
+  //effect: 'fade',
+  //fadeEffect: { crossFade: false },
+  pagination: {
+    el: '.c-home-hero .swiper-pagination',
+    clickable: true,
+    type: "fraction",
+  },
+  navigation: {
+    nextEl: ".c-home-hero .swiper-button-next",
+    prevEl: ".c-home-hero .swiper-button-prev",
+  },
+  autoplay: {
+    delay: 3000,
+  },
+});
+</script>
+{{/contentFor}}

@@ -1,0 +1,44 @@
+.o-app {
+  display: flex;
+  flex-direction: column;
+  // min-height: 100vh;
+  width: 100%;
+
+  &__function {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    text-indent: -10000000px;
+    z-index: -999;
+    background-color: transparent;
+    color: transparent;
+  }
+}
+
+.o-header {
+  flex-shrink: 0;
+}
+
+.o-main {
+  padding: 40px 0;
+}
+
+.o-footer {
+  flex-shrink: 0;
+}
+
+.home-template {
+  .o-main {
+    padding-top: 0;
+  }
+}
+
+.shop-template {
+  .o-main {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

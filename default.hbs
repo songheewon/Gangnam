@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ @site.locale }}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ meta_title }}</title>
+
+  {{> common/vendor }}
+  {{> fonts }}
+  {{> compiled/inline-css }}
+  {{> css/style }}
+
+  <script>
+    var site_url                            = '{{ @site.url }}',
+        pagination_next_page_number         = '{{ pagination.next }}',
+        pagination_available_pages_number   = '{{ pagination.pages }}',
+        pagination_loading_text             = '{{t "Loading" }}',
+        pagination_more_posts_text          = '{{t "More Contents" }}',
+        clipboard_copied_text               = '{{t "Link copied to clipboard" }}';
+
+    var bluedot_user_id = '{{#if @member}}{{@member.uuid}}{{/if}}';
+  </script>
+
+  {{{block "styles"}}}
+  {{ ghost_head }}
+</head>
+<body class="{{ body_class }}{{{block "custom_body_class"}}}">
+<div class="o-app">
+  <div class="o-header">{{> header }}</div>
+  <main class="o-main">{{{ body }}}</main>
+  <div class="o-footer">
+    {{> common/footer/default }}
+    {{> common/footer/provider }}
+  </div>
+</div>
+<div class="o-app__function">
+  <script src="{{ asset "js/app.min.js" }}"></script>
+  {{{block "scripts"}}}
+  {{ ghost_foot }}
+</div>
+</body>
+</html>

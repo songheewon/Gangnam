@@ -1,0 +1,19 @@
+{{#get "pages" filter="tag:hash-home-promotion" limit="1" order="published_at desc"}}
+{{#if pages}}
+{{#foreach pages}}
+<div class="o-grid c-home-section__wrap c-home-promotion__section">
+  <div class="c-home-promotion bg-accent">
+    <div class="c-home-promotion__subject">
+      {{#if meta_description}}
+      <p class="c-home-promotion__subtitle">{{meta_description}}</p>
+      {{/if}}
+      <h2 class="c-home-promotion__title">{{#if meta_title}}{{meta_title}}{{else}}광고 타이틀{{/if}}</h2>
+    </div>
+    <div class="c-home-promotion__action">
+      <a href="{{#if canonical_url}}{{canonical_url}}{{else}}#{{/if}}" class="c-home-promotion__button">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}광고 바로가기{{/if}}</a>
+    </div>
+  </div>
+</div>
+{{/foreach}}
+{{/if}}
+{{/get}}

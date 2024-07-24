@@ -1,0 +1,23 @@
+{{!< default}}
+
+{{#contentFor 'title'}}{{t 'Blog' }}{{/contentFor}}
+
+<div class="c-page__wrap">
+  <div class='o-grid'>
+    <div class="o-grid__col--full">
+      <div class='c-archive'>
+        <h1 class='c-archive__title'>전체기사</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-page__section">
+    <div class="o-grid">
+      {{> loop }}
+    </div>
+  </div>
+
+  <div class="o-grid">
+    {{ pagination }}
+  </div>
+</div>

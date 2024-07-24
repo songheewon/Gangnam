@@ -1,0 +1,27 @@
+<header class='c-post-header'>
+  <h1 class='c-post-header__title'>{{ title }}</h1>
+
+  {{#if custom_excerpt}}
+    <p class='c-post-header__excerpt'>{{ custom_excerpt }}</p>
+  {{/if}}
+
+  {{#is 'post'}}
+    <div class='c-post-header__meta'>
+      {{#primary_author}}
+          {{#if profile_image}}
+            <div class='c-post-header__author_media'>
+              <img class='c-post-header__author_image lazyload' data-src='{{ img_url profile_image size='profile-image-small' }}' alt='{{ name }}' width='32' height='32'>
+            </div>
+          {{/if}}
+          <div class='c-post-header__author_info'>
+            <div class='c-post-header__author_name'>{{ name }}</div>{{/primary_author}}
+            <time class='c-post-header__date' datetime='{{ date format='YYYY-MM-DD' }}'>{{ date format='YYYY-MM-DD' }}</time>
+             -
+            <span class='c-post-header__reading-time'>{{ reading_time minute=(t '1 min read') minutes=(t '% min read') }}</span>
+          </div>
+    </div>
+
+    {{> post-community }}
+
+  {{/is}}
+</header>

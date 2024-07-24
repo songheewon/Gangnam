@@ -1,0 +1,21 @@
+{{#match @custom.home_top_section_1_type "=" "포스트"}}
+{{#get "posts" filter="featured:true" include="tags,authors" limit="1" order="published_at desc" as |items|}}
+{{#if items}}
+  <div class="c-home-featured">
+  {{#foreach items}}
+    {{> card format="media"}}
+  {{/foreach}}
+  </div>
+{{/if}}
+{{/get}}
+{{else}}
+{{#get "products" filter="featured:true" include="tags,authors" limit="1" order="published_at desc" as |items|}}
+{{#if items}}
+  <div class="c-home-featured">
+  {{#foreach items}}
+    {{> card format="media"}}
+  {{/foreach}}
+  </div>
+{{/if}}
+{{/get}}
+{{/match}}
