@@ -330,7 +330,7 @@
   }
 
   &__outer {
-    background-color: var(--home-hero-background-color);
+    background-color: var(--header-background-color);
   }
 
   &__wrap {
@@ -430,4 +430,8 @@
       }
     }
   }
+}
+
+.bluedot-product-wrap .bluedot-product-header {
+  background-color: var(--header-background-color) !important;
 }

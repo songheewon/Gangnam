@@ -3,6 +3,7 @@
 :root {
   --accent-color: {{ @site.accent_color }};
   {{#if @custom.home_hero_background_color}} --home-hero-background-color: {{@custom.home_hero_background_color}}; {{/if}}
+  {{#if @site.header_background_color}}--header-background-color: {{@site.header_background_color}} {{/if}}
 }
 
 * {

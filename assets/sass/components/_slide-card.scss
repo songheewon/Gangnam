@@ -13,7 +13,7 @@
 
   &__media {
     display: flex;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     width: 100%;
 
@@ -27,9 +27,8 @@
       right: 0;
       bottom: -30px;
 
-      aspect-ratio: unset;
+      aspect-ratio: 16 / 9;
       width: 530px;
-      height: 330px;
 
       border: 1px solid #000000;
       border-radius: 33px;

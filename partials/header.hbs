@@ -1,181 +1,69 @@
-<div class="c-header__outer">
-  <div class="o-grid">
-
-    <div class="c-header">
-      <div class="c-header__main">
-        {{!-- Identity --}}
-        <div class="c-header__identity u-link__wrap">
-          <a href="{{ @site.url }}" class="u-link"></a>
+<header class='c-header'>
+  <div class='o-grid c-header__container'>
+    <div class='o-grid__col'>
+      <div class='c-header__inner'>
+        <div class='c-logo'>
           {{#if @site.logo}}
-          <img class="c-header__identity--img" src="{{ @site.logo }}" alt="{{ @site.title }}">
-          {{else}}
-          <h1 class="c-header__identity--text">{{ @site.title }}</h1>
-          {{/if}}
-        </div>
-
-        {{!-- Search form --}}
-        <div class="c-header__search--outer">
-          <div class="c-header__search">
-            <form class="c-header__search--form">
-              <button type="submit" class="c-header__search--submit">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6.37472 7.46828C6.11182 7.6073 5.88096 7.75186 5.63251 7.85642C4.53483 8.3222 3.43675 8.31626 2.35117 7.81444C1.54646 7.44253 0.931991 6.85477 0.502682 6.07174C0.146083 5.41713 -0.0266312 4.6759 0.00332932 3.92869C0.0332898 3.18149 0.264778 2.45692 0.672609 1.83381C1.05373 1.24669 1.57868 0.769983 2.19609 0.45035C2.8704 0.0997684 3.62851 -0.0510344 4.38348 0.0152358C5.13845 0.0815059 5.85971 0.362167 6.46457 0.825031C7.21303 1.39695 7.7146 2.14394 7.94898 3.06321C8.22243 4.14804 8.08063 5.18257 7.52983 6.15492C7.47866 6.24522 7.48022 6.29314 7.55561 6.36839C8.27907 7.09557 8.99784 7.82791 9.71896 8.55746C9.96857 8.80976 10.0639 9.10285 9.95334 9.4502C9.78888 9.97222 9.1162 10.1742 8.69783 9.82805C8.6451 9.78409 8.59432 9.73735 8.54588 9.68863C7.84117 8.97571 7.13698 8.2616 6.43332 7.5463C6.41174 7.52194 6.39215 7.49584 6.37472 7.46828ZM6.77239 4.09457C6.76497 2.56496 5.52978 1.31734 4.0352 1.33002C2.51914 1.34309 1.30075 2.58436 1.30895 4.10526C1.31872 5.63607 2.54883 6.87457 4.05044 6.86467C5.55204 6.85477 6.77942 5.61072 6.77239 4.09457Z" fill="#CCCCCC"/>
-                </svg>
-              </button>
-              <input class="c-header__search--input" type="text" name="stx" value="" placeholder="검색">
-            </form>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="c-header__behaviors">
-        <div class="c-header__member">
-
-          {{#if @member}}
-          <div class="c-header__member--portal">
-            <span>{{t 'Hello'}}, {{@member.name}}</span>
-            <a href='#' data-portal='account' class='c-nav__link js-nav__link-membership'>
-              <div class="c-header__member--profile">
-              {{#if @member.avatar_image}}
-                <img src="{{@member.avatar_image}}" alt="">
-              {{else}}
-                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.0079 1.15803e-06C9.63379 -0.0010415 7.31269 0.702015 5.33817 2.02025C3.36365 3.33848 1.82442 5.21267 0.915165 7.40577C0.00590585 9.59888 -0.232539 12.0124 0.22999 14.341C0.692519 16.6696 1.83524 18.8088 3.51363 20.4879C5.19202 22.167 7.33068 23.3107 9.6591 23.7743C11.9875 24.2378 14.4011 24.0004 16.5946 23.0921C18.7881 22.1838 20.663 20.6454 21.9821 18.6715C23.3012 16.6976 24.0053 14.3768 24.0053 12.0026C24.006 10.4267 23.6962 8.86602 23.0935 7.40983C22.4909 5.95363 21.6073 4.63043 20.4932 3.51581C19.3791 2.40119 18.0563 1.517 16.6003 0.91375C15.1444 0.310497 13.5839 1.00592e-06 12.0079 1.15803e-06ZM12.0079 3.58972C12.793 3.58972 13.5604 3.82251 14.2131 4.25866C14.8658 4.69481 15.3746 5.31472 15.675 6.04001C15.9754 6.76529 16.054 7.56338 15.9009 8.33334C15.7477 9.1033 15.3697 9.81055 14.8146 10.3657C14.2595 10.9208 13.5522 11.2988 12.7823 11.452C12.0123 11.6051 11.2142 11.5265 10.4889 11.2261C9.76366 10.9257 9.14375 10.4169 8.7076 9.76417C8.27145 9.11143 8.03866 8.34402 8.03866 7.55897C8.03866 6.50626 8.45685 5.49667 9.20123 4.75229C9.94561 4.00791 10.9552 3.58972 12.0079 3.58972ZM12.0079 20.8636C9.90585 20.8676 7.87166 20.1198 6.27279 18.7551C6.08695 18.5961 5.93755 18.3989 5.83476 18.1769C5.73198 17.955 5.67822 17.7135 5.67714 17.4689C5.67783 16.9415 5.78266 16.4194 5.98561 15.9326C6.18857 15.4458 6.48565 15.0038 6.85983 14.6321C7.234 14.2604 7.67789 13.9662 8.16603 13.7664C8.65417 13.5667 9.17695 13.4653 9.70438 13.468H14.322C14.8489 13.4653 15.3712 13.5667 15.8587 13.7666C16.3463 13.9665 16.7895 14.2608 17.1628 14.6327C17.5362 15.0046 17.8322 15.4466 18.034 15.9334C18.2359 16.4201 18.3394 16.942 18.3387 17.4689C18.339 17.7137 18.2859 17.9557 18.183 18.1778C18.0801 18.4 17.93 18.597 17.743 18.7551C16.1428 20.1209 14.1065 20.8689 12.0026 20.8636H12.0079Z" fill="black"/>
-                </svg>
-              {{/if}}
-              </div>
+            <a href='{{ @site.url }}'>
+              <img class='c-logo__img' src='{{ @site.logo }}' alt='{{ @site.brand_site_title }}' width='' height=''>
             </a>
-          </div>
-          <div class="c-header__member--signout">
-            <a href='#signout' class='c-nav__link c-nav__link--sign' data-members-signout>{{t 'Log out' }}</a>
-          </div>
           {{else}}
-          <div class="c-header__member--signin">
-            <a href='{{ @site.url }}/signin/' class='c-nav__link c-nav__link--sign js-nav__link-membership'>{{t 'Log in' }}</a>
-          </div>
-          {{/if}}
-
-          {{#if @price.use}}
-          {{#unless @member.paid}}
-          <div class="c-header__member--membership">
-            <a href="{{ @site.url }}/membership/" class="bg-accent c-nav__link c-nav__link--member js-nav__link-membership">{{t "Membership" }}</a>
-          </div>
-          {{/unless}}
-          {{/if}}
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="c-subheader">
-      <div class="c-header__nav--outer">
-        <ul class="c-header__nav o-plain-list">{{ navigation }}</ul>
-      </div>
-    </div>
-
-    <div class="c-header-m">
-
-      <div class="c-header-m__main">
-
-        {{!-- Identity --}}
-        <div class="c-header__identity u-link__wrap">
-          <a href="{{ @site.url }}" class="u-link"></a>
-          {{#if @site.logo}}
-          <img class="c-header__identity--img" src="{{ @site.logo }}" alt="{{ @site.title }}">
-          {{else}}
-          <h1 class="c-header__identity--text">{{ @site.title }}</h1>
+            <a class='c-logo__link' href='{{ @site.url }}' style="font-size: 24px">{{ @site.brand_site_title }}</a>
           {{/if}}
         </div>
 
-      </div>
+        <div class='c-nav-wrap'>
+          <ul class='c-nav o-plain-list'>
 
-      <div class="c-header-m__behaviors">
-        <div class="c-header-m__hamburger js-nav-toggle">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </div>
-      </div>
-
-    </div>
+            <li class="c-nav__item c-nav__item--only-mobile">
 
 
+              <form id="c-search">
+                <input class="c-search__stx" type="text" name="stx" value="" placeholder="{{t '검색'}}" />
+                <button class="c-search__submit" type="submit">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.56443 12.201C9.16999 12.4096 8.8236 12.6265 8.45084 12.7834C6.80391 13.4822 5.15639 13.4733 3.52762 12.7204C2.32026 12.1624 1.39833 11.2805 0.754209 10.1057C0.219179 9.12354 -0.0399566 8.01142 0.0049952 6.89033C0.049947 5.76925 0.397265 4.68213 1.00916 3.74725C1.58098 2.86635 2.36861 2.15111 3.29494 1.67154C4.30665 1.14554 5.4441 0.919279 6.57683 1.01871C7.70956 1.11814 8.79173 1.53923 9.69923 2.2337C10.8222 3.09179 11.5747 4.21254 11.9264 5.59179C12.3367 7.21944 12.1239 8.77161 11.2975 10.2305C11.2207 10.366 11.2231 10.4379 11.3362 10.5508C12.4217 11.6418 13.5001 12.7406 14.582 13.8352C14.9565 14.2137 15.0995 14.6535 14.9337 15.1746C14.6869 15.9578 13.6777 16.2609 13.05 15.7415C12.9708 15.6756 12.8946 15.6055 12.822 15.5324C11.7646 14.4627 10.7081 13.3913 9.65234 12.3181C9.61998 12.2815 9.59058 12.2424 9.56443 12.201ZM10.1611 7.13921C10.1499 4.84423 8.2967 2.97235 6.05429 2.99136C3.77964 3.01097 1.95161 4.87335 1.96391 7.15526C1.97857 9.45203 3.82419 11.3102 6.07715 11.2954C8.33011 11.2805 10.1716 9.41399 10.1611 7.13921Z" fill="black"/>
+                  </svg>
+                </button>
+              </form>
+            </li>
 
-  </div>
-</div>
+            {{ navigation }}
 
-<div class="c-header-drawer">
-  <div class="c-header-drawer__inner">
-    <div class="c-header-drawer__header">
-      {{!-- Identity --}}
-      <div class="c-header__identity u-link__wrap">
-        <a href="{{ @site.url }}" class="u-link"></a>
-        {{#if @site.logo}}
-        <img class="c-header__identity--img" src="{{ @site.logo }}" alt="{{ @site.title }}">
-        {{else}}
-        <h1 class="c-header__identity--text">{{ @site.title }}</h1>
-        {{/if}}
-      </div>
 
-      <div class="c-header-drawer__toggle js-nav-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </div>
-    </div>
 
-    <div class="c-header-drawer__main">
-      <div class="c-header-drawer__main--header">
-        {{#if @member}}
-        <div class="c-header__member--portal">
-          <a href='#' data-portal='account' class='c-nav__link js-nav__link-membership'>
-            <div class="c-header__member--profile">
-            {{#if @member.avatar_image}}
-              <img src="{{@member.avatar_image}}" alt="">
+
+            {{!-- {{> social-icons }} --}}
+
+            <li class="c-nav__item c-nav__item--only-desktop">{{bluedot_search_button size="18"}}</li>
+
+            {{#if @member}}
+              <li class='c-nav__item is-membership'>
+                <a href='#' data-portal='account' class='c-nav__link js-nav__link-membership'>
+                  <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0079 1.15803e-06C9.63379 -0.0010415 7.31269 0.702015 5.33817 2.02025C3.36365 3.33848 1.82442 5.21267 0.915165 7.40577C0.00590585 9.59888 -0.232539 12.0124 0.22999 14.341C0.692519 16.6696 1.83524 18.8088 3.51363 20.4879C5.19202 22.167 7.33068 23.3107 9.6591 23.7743C11.9875 24.2378 14.4011 24.0004 16.5946 23.0921C18.7881 22.1838 20.663 20.6454 21.9821 18.6715C23.3012 16.6976 24.0053 14.3768 24.0053 12.0026C24.006 10.4267 23.6962 8.86602 23.0935 7.40983C22.4909 5.95363 21.6073 4.63043 20.4932 3.51581C19.3791 2.40119 18.0563 1.517 16.6003 0.91375C15.1444 0.310497 13.5839 1.00592e-06 12.0079 1.15803e-06ZM12.0079 3.58972C12.793 3.58972 13.5604 3.82251 14.2131 4.25866C14.8658 4.69481 15.3746 5.31472 15.675 6.04001C15.9754 6.76529 16.054 7.56338 15.9009 8.33334C15.7477 9.1033 15.3697 9.81055 14.8146 10.3657C14.2595 10.9208 13.5522 11.2988 12.7823 11.452C12.0123 11.6051 11.2142 11.5265 10.4889 11.2261C9.76366 10.9257 9.14375 10.4169 8.7076 9.76417C8.27145 9.11143 8.03866 8.34402 8.03866 7.55897C8.03866 6.50626 8.45685 5.49667 9.20123 4.75229C9.94561 4.00791 10.9552 3.58972 12.0079 3.58972ZM12.0079 20.8636C9.90585 20.8676 7.87166 20.1198 6.27279 18.7551C6.08695 18.5961 5.93755 18.3989 5.83476 18.1769C5.73198 17.955 5.67822 17.7135 5.67714 17.4689C5.67783 16.9415 5.78266 16.4194 5.98561 15.9326C6.18857 15.4458 6.48565 15.0038 6.85983 14.6321C7.234 14.2604 7.67789 13.9662 8.16603 13.7664C8.65417 13.5667 9.17695 13.4653 9.70438 13.468H14.322C14.8489 13.4653 15.3712 13.5667 15.8587 13.7666C16.3463 13.9665 16.7895 14.2608 17.1628 14.6327C17.5362 15.0046 17.8322 15.4466 18.034 15.9334C18.2359 16.4201 18.3394 16.942 18.3387 17.4689C18.339 17.7137 18.2859 17.9557 18.183 18.1778C18.0801 18.4 17.93 18.597 17.743 18.7551C16.1428 20.1209 14.1065 20.8689 12.0026 20.8636H12.0079Z" fill="black"/>
+                  </svg>
+                </a>
+              </li>
+              <li class='c-nav__item is-membership'><a href='#signout' class='c-nav__link c-nav__link--sign' data-members-signout>{{t 'Log out' }}</a></li>
             {{else}}
-              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.0079 1.15803e-06C9.63379 -0.0010415 7.31269 0.702015 5.33817 2.02025C3.36365 3.33848 1.82442 5.21267 0.915165 7.40577C0.00590585 9.59888 -0.232539 12.0124 0.22999 14.341C0.692519 16.6696 1.83524 18.8088 3.51363 20.4879C5.19202 22.167 7.33068 23.3107 9.6591 23.7743C11.9875 24.2378 14.4011 24.0004 16.5946 23.0921C18.7881 22.1838 20.663 20.6454 21.9821 18.6715C23.3012 16.6976 24.0053 14.3768 24.0053 12.0026C24.006 10.4267 23.6962 8.86602 23.0935 7.40983C22.4909 5.95363 21.6073 4.63043 20.4932 3.51581C19.3791 2.40119 18.0563 1.517 16.6003 0.91375C15.1444 0.310497 13.5839 1.00592e-06 12.0079 1.15803e-06ZM12.0079 3.58972C12.793 3.58972 13.5604 3.82251 14.2131 4.25866C14.8658 4.69481 15.3746 5.31472 15.675 6.04001C15.9754 6.76529 16.054 7.56338 15.9009 8.33334C15.7477 9.1033 15.3697 9.81055 14.8146 10.3657C14.2595 10.9208 13.5522 11.2988 12.7823 11.452C12.0123 11.6051 11.2142 11.5265 10.4889 11.2261C9.76366 10.9257 9.14375 10.4169 8.7076 9.76417C8.27145 9.11143 8.03866 8.34402 8.03866 7.55897C8.03866 6.50626 8.45685 5.49667 9.20123 4.75229C9.94561 4.00791 10.9552 3.58972 12.0079 3.58972ZM12.0079 20.8636C9.90585 20.8676 7.87166 20.1198 6.27279 18.7551C6.08695 18.5961 5.93755 18.3989 5.83476 18.1769C5.73198 17.955 5.67822 17.7135 5.67714 17.4689C5.67783 16.9415 5.78266 16.4194 5.98561 15.9326C6.18857 15.4458 6.48565 15.0038 6.85983 14.6321C7.234 14.2604 7.67789 13.9662 8.16603 13.7664C8.65417 13.5667 9.17695 13.4653 9.70438 13.468H14.322C14.8489 13.4653 15.3712 13.5667 15.8587 13.7666C16.3463 13.9665 16.7895 14.2608 17.1628 14.6327C17.5362 15.0046 17.8322 15.4466 18.034 15.9334C18.2359 16.4201 18.3394 16.942 18.3387 17.4689C18.339 17.7137 18.2859 17.9557 18.183 18.1778C18.0801 18.4 17.93 18.597 17.743 18.7551C16.1428 20.1209 14.1065 20.8689 12.0026 20.8636H12.0079Z" fill="black"/>
-              </svg>
+              <li class='c-nav__item is-membership'><a href='{{ @site.url }}/signin/' class='c-nav__link c-nav__link--sign js-nav__link-membership'>{{t 'Log in' }}</a></li>
             {{/if}}
-            </div>
-          </a>
-          <span>{{t 'Hello'}}, {{@member.name}}</span>
-        </div>
-        {{/if}}
 
-        {{!-- Search form --}}
-        <div class="c-header__search--outer">
-          <div class="c-header__search">
-            <form class="c-header__search--form">
-              <button type="submit" class="c-header__search--submit">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6.37472 7.46828C6.11182 7.6073 5.88096 7.75186 5.63251 7.85642C4.53483 8.3222 3.43675 8.31626 2.35117 7.81444C1.54646 7.44253 0.931991 6.85477 0.502682 6.07174C0.146083 5.41713 -0.0266312 4.6759 0.00332932 3.92869C0.0332898 3.18149 0.264778 2.45692 0.672609 1.83381C1.05373 1.24669 1.57868 0.769983 2.19609 0.45035C2.8704 0.0997684 3.62851 -0.0510344 4.38348 0.0152358C5.13845 0.0815059 5.85971 0.362167 6.46457 0.825031C7.21303 1.39695 7.7146 2.14394 7.94898 3.06321C8.22243 4.14804 8.08063 5.18257 7.52983 6.15492C7.47866 6.24522 7.48022 6.29314 7.55561 6.36839C8.27907 7.09557 8.99784 7.82791 9.71896 8.55746C9.96857 8.80976 10.0639 9.10285 9.95334 9.4502C9.78888 9.97222 9.1162 10.1742 8.69783 9.82805C8.6451 9.78409 8.59432 9.73735 8.54588 9.68863C7.84117 8.97571 7.13698 8.2616 6.43332 7.5463C6.41174 7.52194 6.39215 7.49584 6.37472 7.46828ZM6.77239 4.09457C6.76497 2.56496 5.52978 1.31734 4.0352 1.33002C2.51914 1.34309 1.30075 2.58436 1.30895 4.10526C1.31872 5.63607 2.54883 6.87457 4.05044 6.86467C5.55204 6.85477 6.77942 5.61072 6.77239 4.09457Z" fill="#CCCCCC"/>
-                </svg>
-              </button>
-              <input class="c-header__search--input" type="text" name="stx" value="" placeholder="검색">
-            </form>
-          </div>
+            {{#if @price.use}}
+                {{#unless @member.paid}}
+                  <li class='c-nav__item is-membership'>
+                    <a href='{{ @site.url }}/membership/' class='bg-accent c-nav__link c-nav__link--member js-nav__link-membership'>{{t 'Membership' }}</a>
+                  </li>
+                {{/unless}}
+            {{/if}}
+          </ul>
+        </div>
+
+        <div class='js-nav-toggle c-nav-toggle'>
+          <span class='c-nav-toggle__icon'></span>
         </div>
       </div>
-
-
-      <ul class="c-header__nav o-plain-list">
-        {{ navigation }}
-        {{#unless @member}}
-        <li class="c-nav__item c-nav__item--signin">
-          <a href="{{ @site.url }}/signin/" class="c-nav__link ">{{t 'Log in' }}</a>
-        </li>
-        {{/unless}}
-        {{#if @price.use}}
-        {{#unless @member.paid}}
-        <div class="c-header__member--membership">
-          <a href="{{ @site.url }}/membership/" class="bg-accent c-nav__link c-nav__link--member js-nav__link-membership">{{t "Membership" }}</a>
-        </div>
-        {{/unless}}
-        {{/if}}
-      </ul>
     </div>
   </div>
-</div>
+</header>

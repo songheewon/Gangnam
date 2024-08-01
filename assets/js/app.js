@@ -18,13 +18,10 @@ $(document).ready(function() {
 
   $('.js-nav-toggle').click(function(e) {
     e.preventDefault();
-    $('.c-header-drawer').toggleClass('is-active');
-
-    // $(this).toggleClass('c-nav-toggle--close');
-
+    $('.c-nav-wrap').toggleClass('is-active');
+    $(this).toggleClass('c-nav-toggle--close');
     $('body').toggleClass('e-mode-mobile');
   });
-
   // =====================
   // Koenig Gallery
   // =====================
