@@ -76,18 +76,18 @@
 
       <div class="c-home-top__col c-home-featured__col">
         <div class="c-home-top__header">
-          <div class="c-home-top__title">{{#if @custom.home_top_section_1}}{{ @custom.home_top_section_1 }}{{else}}추천 강좌{{/if}}</div>
+          <div class="c-home-top__title">{{#if @site.shop_section_title}}{{ @site.shop_section_title }}{{else}}추천 PPT{{/if}}</div>
         </div>
         <div class="c-home-top__main">
           {{> home-top-featured }}
         </div>
       </div>
-
+      {{#if @site.visible_feature_content_section}}
       <div class="c-home-top__col c-home-popular__col">
         <div class="c-home-top__header">
           <div class="c-home-top__title">
             <a href="{{@site.url}}/shop/" class="c-home-top__title--link">
-              {{#if @custom.home_top_section_2}}{{ @custom.home_top_section_2 }}{{else}}인기 강좌{{/if}}
+              인기 콘텐츠
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
@@ -99,6 +99,7 @@
           {{> home-top-popular }}
         </div>
       </div>
+      {{/if}}
 
     </div>
 
@@ -107,8 +108,8 @@
 
 
 {{!-- Home Post Section --}}
-{{#if @custom.tag_slugs_for_home_sections}}
-{{#get "tags" filter="slug:[{{@custom.tag_slugs_for_home_sections}}]"}}
+{{#if @site.tag_names}}
+{{#get "tags" filter="slug:[{{@site.tag_names}}]"}}
 {{#if tags}}
 <div class="c-home-sections c-home-sections--post">
 {{#foreach tags}}

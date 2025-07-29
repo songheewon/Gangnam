@@ -111,6 +111,7 @@
       "newsletter_form_title" : {
         "group": "newsletter_form",
         "type": "text",
+        
         "title": "뉴스레터 폼 제목",
         "default": "뉴스레터"
       }
